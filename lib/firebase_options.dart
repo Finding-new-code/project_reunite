@@ -23,15 +23,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -51,19 +45,41 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyBnxmCxO0Sag1nV8cGYlXD6eDXIrsAi6gk',
-    appId: '1:137961333259:web:49dfe0b9b450d6dbba5d0e',
+    appId: '1:137961333259:web:17b371e628531af1ba5d0e',
     messagingSenderId: '137961333259',
     projectId: 'project-reunite',
     authDomain: 'project-reunite.firebaseapp.com',
     storageBucket: 'project-reunite.appspot.com',
-    measurementId: 'G-R8B0C09L1F',
+    measurementId: 'G-CG7S1QCVMX',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyByyr61skCSWS8Xl-J6FkC6b204cMBpy0w',
-    appId: '1:137961333259:android:7c7a8d6a1288af68ba5d0e',
+    appId: '1:137961333259:android:95db04f278e68b2dba5d0e',
     messagingSenderId: '137961333259',
     projectId: 'project-reunite',
     storageBucket: 'project-reunite.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyBCgT7iMFZVDjfktyZ4XIWsBTwF5tE5Qc8',
+    appId: '1:137961333259:ios:6684289f9dae2798ba5d0e',
+    messagingSenderId: '137961333259',
+    projectId: 'project-reunite',
+    storageBucket: 'project-reunite.appspot.com',
+    androidClientId: '137961333259-mcr0p2o2o6mp1m6k4dll7dqh7kf7k094.apps.googleusercontent.com',
+    iosClientId: '137961333259-dffoisf3bctc3r1cm8c2iouc67hlv5fb.apps.googleusercontent.com',
+    iosBundleId: 'com.example.projectReunite',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBCgT7iMFZVDjfktyZ4XIWsBTwF5tE5Qc8',
+    appId: '1:137961333259:ios:6684289f9dae2798ba5d0e',
+    messagingSenderId: '137961333259',
+    projectId: 'project-reunite',
+    storageBucket: 'project-reunite.appspot.com',
+    androidClientId: '137961333259-mcr0p2o2o6mp1m6k4dll7dqh7kf7k094.apps.googleusercontent.com',
+    iosClientId: '137961333259-dffoisf3bctc3r1cm8c2iouc67hlv5fb.apps.googleusercontent.com',
+    iosBundleId: 'com.example.projectReunite',
   );
 }

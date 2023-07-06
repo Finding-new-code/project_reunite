@@ -18,7 +18,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView>
     with SingleTickerProviderStateMixin {
-  final User? user = auth().currentUser;
+  //final User? user = auth().currentUser;
   final signalling = GetIt.I.get<Signalling>();
   // Signalling signalling = Signalling();
   // final RTCVideoRenderer _remoteRenderer = RTCVideoRenderer();
@@ -87,7 +87,7 @@ class _HomeViewState extends State<HomeView>
                   ),
                   children: [
                     TextSpan(
-                        text: user?.displayName,
+                        text: "",
                         style: GoogleFonts.anton(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,

@@ -17,10 +17,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
-  final User? user = auth().currentUser;
-  Future<void> signOut() async {
-    await auth().signOut();
-  }
+  // final User? user = auth().currentUser;
+  // Future<void> signOut() async {
+  //   await auth().signOut();
+  // }
 
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -143,74 +143,67 @@ class _LoginPageState extends State<LoginPage>
                         fontWeight: FontWeight.bold,
                         color: Colors.white54),
                   ),
-                  
                 ],
               ),
             ),
           )
         : Scaffold(
             body: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Align(
-                  alignment: Alignment.topCenter,
-                ),
-                IntrinsicHeight(
-                  child: Row(
+                betaBanner1(),
+                Padding(
+                  padding: const EdgeInsets.all(120.0),
+                  child: Column(
                     children: [
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: AnimatedBuilder(
+                          animation: _controller,
+                          builder: (context, child) {
+                            return Transform(
+                              alignment: Alignment.center,
+                              transform:
+                                  Matrix4.identity().scaled(_animation.value),
+                              child: Image.asset(AssetsManeger.appicon),
+                            );
+                          },
+                        ),
+                      ),
                       const SizedBox(
-                        width: 20,
+                        height: 20,
                       ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 100,
-                            height: 100,
-                            child: AnimatedBuilder(
-                              animation: _controller,
-                              builder: (context, child) {
-                                return Transform(
-                                  alignment: Alignment.center,
-                                  transform: Matrix4.identity()
-                                      .scaled(_animation.value),
-                                  child: Image.asset(AssetsManeger.appicon),
-                                );
-                              },
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Text.rich(
-                            TextSpan(
-                                text: 'Welcome to Project Reunite',
-                                style: GoogleFonts.robotoFlex(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                                children: [
-                                  TextSpan(
-                                      text:
-                                          "\nIts a 3 phares beta Programe to test new feature integration\n and VAPT etc",
-                                      style: GoogleFonts.inter(
-                                        color: Colors.white60,
-                                        fontSize: 12,
-                                      ))
-                                ]),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                      Text.rich(
+                        TextSpan(
+                            text: 'Welcome to Project Reunite',
+                            style: GoogleFonts.robotoFlex(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                            children: [
+                              TextSpan(
+                                  text:
+                                      "\nIts a 3 phares beta Programe to test new feature integration\n and VAPT etc",
+                                  style: GoogleFonts.inter(
+                                    color: Colors.white60,
+                                    fontSize: 12,
+                                  ))
+                            ]),
+                        textAlign: TextAlign.center,
                       ),
-                      const VerticalDivider(),
-                      Column(
-                        children: [
-                          TextfieldUI(
-                            controller: phonenumber,
-                            hintText: "Enter your phone number",
-                            obscureText: false,
-                          ),
-                        ],
+                      TextfieldUI(
+                        controller: phonenumber,
+                        hintText: "Enter your phone number",
+                        obscureText: false,
+                      ),
+                      ButtonUI(
+                        wsize: 50,
+                        hsize: 10,
+                        onpressed: () async {
+                          //getIt<auth>().PhoneSignin(context, phonenumber.text);
+                          Navigator.pushNamed(context, '/home');
+                        },
+                        text: "Proceed",
                       ),
                     ],
                   ),

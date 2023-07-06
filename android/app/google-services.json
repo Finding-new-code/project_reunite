@@ -7,14 +7,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:137961333259:android:7c7a8d6a1288af68ba5d0e",
+        "mobilesdk_app_id": "1:137961333259:android:95db04f278e68b2dba5d0e",
         "android_client_info": {
           "package_name": "code.lazyowl.project_reunite.it"
         }
       },
       "oauth_client": [
         {
-          "client_id": "137961333259-4fn23ak9oaoue15ubaks12ghanv4c7ft.apps.googleusercontent.com",
+          "client_id": "137961333259-a0nfvpf9iqap5tk5l94qm1p3opscitim.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -31,54 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "137961333259-dffoisf3bctc3r1cm8c2iouc67hlv5fb.apps.googleusercontent.com",
+              "client_id": "137961333259-b6p3jp59a99omtgo9ru6cpildmmirsa0.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.projectReunite"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:137961333259:android:c6296cb4515944c6ba5d0e",
-        "android_client_info": {
-          "package_name": "com.example.project_reunite"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "137961333259-mcr0p2o2o6mp1m6k4dll7dqh7kf7k094.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.project_reunite",
-            "certificate_hash": "c096cb3ef2dfd1536b471d6a92bc5f0af3c90ef2"
-          }
-        },
-        {
-          "client_id": "137961333259-4fn23ak9oaoue15ubaks12ghanv4c7ft.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyByyr61skCSWS8Xl-J6FkC6b204cMBpy0w"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "137961333259-4fn23ak9oaoue15ubaks12ghanv4c7ft.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "137961333259-dffoisf3bctc3r1cm8c2iouc67hlv5fb.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.projectReunite"
+                "bundle_id": "com.example.projectReunite.RunnerTests"
               }
             }
           ]

@@ -26,7 +26,7 @@ class _CallRoomState extends State<CallRoom> {
   bool someoneJoin = false;
   bool isVideoON = true;
   bool isMicON = true;
-  final User? user = auth().currentUser;
+  //final User? user = auth().currentUser;
 
   @override
   void initState() {

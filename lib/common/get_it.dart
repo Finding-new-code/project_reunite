@@ -6,5 +6,5 @@ final getIt = GetIt.instance;
 
 void setup() {
   getIt.registerLazySingleton<Signalling>(() => Signalling());
-  getIt.registerLazySingleton<auth>(() => auth());
+  // getIt.registerLazySingleton<auth>(() => auth());
 }
