@@ -70,8 +70,6 @@ class _HomeViewState extends State<HomeView>
       
        ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           betaBanner1(),
           Padding(
@@ -112,6 +110,8 @@ class _HomeViewState extends State<HomeView>
                     ),
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ButtonUI(
                         onpressed: () async {

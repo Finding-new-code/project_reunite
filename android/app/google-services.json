@@ -1,40 +1,76 @@
 {
   "project_info": {
-    "project_number": "137961333259",
-    "project_id": "project-reunite",
-    "storage_bucket": "project-reunite.appspot.com"
+    "project_number": "564007385931",
+    "project_id": "example-test-c6d6a",
+    "storage_bucket": "example-test-c6d6a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:137961333259:android:95db04f278e68b2dba5d0e",
+        "mobilesdk_app_id": "1:564007385931:android:05868d995d80ea3d3006ce",
         "android_client_info": {
           "package_name": "code.lazyowl.project_reunite.it"
         }
       },
       "oauth_client": [
         {
-          "client_id": "137961333259-a0nfvpf9iqap5tk5l94qm1p3opscitim.apps.googleusercontent.com",
+          "client_id": "564007385931-j2h3vgjdq6irsmk2brl2ubv2blicgjn4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyByyr61skCSWS8Xl-J6FkC6b204cMBpy0w"
+          "current_key": "AIzaSyCtzXKqiNT5rDGZJxqu7gqFDhoqdE1v7Kk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "137961333259-4fn23ak9oaoue15ubaks12ghanv4c7ft.apps.googleusercontent.com",
+              "client_id": "564007385931-j2h3vgjdq6irsmk2brl2ubv2blicgjn4.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "137961333259-b6p3jp59a99omtgo9ru6cpildmmirsa0.apps.googleusercontent.com",
+              "client_id": "564007385931-e6bdr42rnkqfl9isvgmaaalej6lng617.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.projectReunite.RunnerTests"
+                "bundle_id": "dev.flutterexplained.webrtcTutorial"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564007385931:android:4a8466b4fbf0e2ca3006ce",
+        "android_client_info": {
+          "package_name": "dev.flutterexplained.webrtc_tutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564007385931-j2h3vgjdq6irsmk2brl2ubv2blicgjn4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtzXKqiNT5rDGZJxqu7gqFDhoqdE1v7Kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564007385931-j2h3vgjdq6irsmk2brl2ubv2blicgjn4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "564007385931-e6bdr42rnkqfl9isvgmaaalej6lng617.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.flutterexplained.webrtcTutorial"
               }
             }
           ]
