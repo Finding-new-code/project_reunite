@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:project_reunite/Apis/webrtc.dart';
@@ -8,7 +8,6 @@ import 'package:project_reunite/common/common.dart';
 
 import 'package:project_reunite/common/widgets/shareroom.dart';
 import 'package:project_reunite/constants/export.dart';
-import '../../Apis/firebase_auth.dart';
 import '../../common/get_it.dart';
 
 class CallRoom extends StatefulWidget {
@@ -80,7 +79,7 @@ class _CallRoomState extends State<CallRoom> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery.sizeOf(context);
     return size.width <= 600
         ? Scaffold(
             resizeToAvoidBottomInset: true,
@@ -202,25 +201,23 @@ class _CallRoomState extends State<CallRoom> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      AnimatedStackContainer(
-                        height: 100,
-                        width: 150,
-                        children: Expanded(
-                            child: RTCVideoView(
-                          signalling.localRenderer!,
-                          mirror: true,
-                        )),
-                      ),
-                      AnimatedStackContainer(
-                          width: 200,
-                          height: 100,
-                          children: RTCVideoView(signalling.remoteRenderer!))
-                    ],
+                  child: AnimatedStackContainer(
+                    height: 500,
+                    width: 500,
+                    children: Expanded(
+                        child: RTCVideoView(
+                      signalling.localRenderer!,
+                      mirror: true,
+                    )),
                   ),
+                ),
+                Padding(
+                  
+                  padding: const EdgeInsets.all(20.0),
+                  child: AnimatedStackContainer(
+                      width: 200,
+                      height: 100,
+                      children: RTCVideoView(signalling.remoteRenderer!)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

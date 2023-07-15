@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:project_reunite/common/widgets/error.dart';
 import 'package:project_reunite/constants/export.dart';
 
 typedef StreamStateCallback = void Function(MediaStream stream);
@@ -306,7 +305,7 @@ class Signalling {
 
     // Listen for remote Ice candidates below
     roomRef.collection('calleeCandidates').snapshots().listen((snapshot) {
-      snapshot.docChanges.forEach((change) {
+      for (var change in snapshot.docChanges) {
         if (change.type == DocumentChangeType.added) {
           Map<String, dynamic> data = change.doc.data() as Map<String, dynamic>;
           print('Got new remote ICE candidate: ${jsonEncode(data)}');
@@ -318,7 +317,7 @@ class Signalling {
             ),
           );
         }
-      });
+      }
     });
     // Listen for remote ICE candidates above
 
@@ -328,7 +327,7 @@ class Signalling {
   Future<void> joinRoom(String roomId,) async {
     FirebaseFirestore db = FirebaseFirestore.instance;
     print(roomId);
-    DocumentReference roomRef = db.collection('rooms').doc('$roomId');
+    DocumentReference roomRef = db.collection('rooms').doc(roomId);
     var roomSnapshot = await roomRef.get();
     print('Got room ${roomSnapshot.exists}');
 
@@ -383,7 +382,7 @@ class Signalling {
 
       // Listening for remote ICE candidates below
       roomRef.collection('callerCandidates').snapshots().listen((snapshot) {
-        snapshot.docChanges.forEach((document) {
+        for (var document in snapshot.docChanges) {
           var data = document.doc.data() as Map<String, dynamic>;
           print(data);
           print('Got new remote ICE candidate: $data');
@@ -394,7 +393,7 @@ class Signalling {
               data['sdpMLineIndex'],
             ),
           );
-        });
+        }
       });
     }
   }
@@ -428,10 +427,14 @@ class Signalling {
       var db = FirebaseFirestore.instance;
       var roomRef = db.collection('rooms').doc(roomId);
       var calleeCandidates = await roomRef.collection('calleeCandidates').get();
-      calleeCandidates.docs.forEach((document) => document.reference.delete());
+      for (var document in calleeCandidates.docs) {
+        document.reference.delete();
+      }
 
       var callerCandidates = await roomRef.collection('callerCandidates').get();
-      callerCandidates.docs.forEach((document) => document.reference.delete());
+      for (var document in callerCandidates.docs) {
+        document.reference.delete();
+      }
 
       await roomRef.delete();
     }

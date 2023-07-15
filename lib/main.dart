@@ -10,7 +10,6 @@ import 'package:project_reunite/common/get_it.dart';
 import 'package:project_reunite/firebase_options.dart';
 import 'package:project_reunite/themedata/themedata.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:freerasp/freerasp.dart';
 
 
 

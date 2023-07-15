@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_reunite/Apis/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:project_reunite/common/common.dart';
-import 'package:project_reunite/common/get_it.dart';
 import 'package:project_reunite/common/widgets/beta_banner.dart';
 import 'package:project_reunite/constants/export.dart';
 
@@ -152,60 +150,65 @@ class _LoginPageState extends State<LoginPage>
               children: [
                 betaBanner1(),
                 Padding(
-                  padding: const EdgeInsets.all(120.0),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: AnimatedBuilder(
-                          animation: _controller,
-                          builder: (context, child) {
-                            return Transform(
-                              alignment: Alignment.center,
-                              transform:
-                                  Matrix4.identity().scaled(_animation.value),
-                              child: Image.asset(AssetsManeger.appicon),
-                            );
-                          },
+                  padding: const EdgeInsets.only(top: 120,bottom: 100, left: 300,right: 300),
+                  child: Container(
+                    color: Colors.black54,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: AnimatedBuilder(
+                            animation: _controller,
+                            builder: (context, child) {
+                              return Transform(
+                                alignment: Alignment.center,
+                                transform:
+                                    Matrix4.identity().scaled(_animation.value),
+                                child: Image.asset(AssetsManeger.appicon),
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text.rich(
-                        TextSpan(
-                            text: 'Welcome to Project Reunite',
-                            style: GoogleFonts.robotoFlex(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                            children: [
-                              TextSpan(
-                                  text:
-                                      "\nIts a 3 phares beta Programe to test new feature integration\n and VAPT etc",
-                                  style: GoogleFonts.inter(
-                                    color: Colors.white60,
-                                    fontSize: 12,
-                                  ))
-                            ]),
-                        textAlign: TextAlign.center,
-                      ),
-                      TextfieldUI(
-                        controller: phonenumber,
-                        hintText: "Enter your phone number",
-                        obscureText: false,
-                      ),
-                      ButtonUI(
-                        wsize: 50,
-                        hsize: 10,
-                        onpressed: () async {
-                          //getIt<auth>().PhoneSignin(context, phonenumber.text);
-                          Navigator.pushNamed(context, '/home');
-                        },
-                        text: "Proceed",
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Text.rich(
+                          TextSpan(
+                              text: 'Welcome to Project Reunite',
+                              style: GoogleFonts.robotoFlex(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              children: [
+                                TextSpan(
+                                    text:
+                                        "\nIts a 3 phares beta Programe to test new feature integration\n and VAPT etc",
+                                    style: GoogleFonts.inter(
+                                      color: Colors.white60,
+                                      fontSize: 12,
+                                    ))
+                              ]),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 30,),
+                        TextfieldUI(
+                          controller: phonenumber,
+                          hintText: "Enter your phone number",
+                          obscureText: false,
+                        ),
+                        const SizedBox(height: 30,),
+                        ButtonUI(
+                          wsize: 50,
+                          hsize: 10,
+                          onpressed: () async {
+                            //getIt<auth>().PhoneSignin(context, phonenumber.text);
+                            Navigator.pushNamed(context, '/home');
+                          },
+                          text: "Proceed",
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

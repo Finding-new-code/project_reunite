@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:project_reunite/Apis/firebase_auth.dart';
 import 'package:project_reunite/Pages/CallView/callview.dart';
 import 'package:project_reunite/common/get_it.dart';
 import 'package:project_reunite/common/widgets/beta_banner.dart';
@@ -16,8 +15,7 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView>
-    with SingleTickerProviderStateMixin {
+class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin {
   //final User? user = auth().currentUser;
   final signalling = GetIt.I.get<Signalling>();
   // Signalling signalling = Signalling();
@@ -25,7 +23,7 @@ class _HomeViewState extends State<HomeView>
   // final RTCVideoRenderer _localRenderer = RTCVideoRenderer();
   // String? roomId;
   // TextEditingController enterID = TextEditingController();
-  // bool _offer = false;
+  // bool _offer = false;  
   // late RTCPeerConnection _peerConnection;
   // late final MediaStream _localStream;
 
@@ -99,7 +97,9 @@ class _HomeViewState extends State<HomeView>
             children: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  const SizedBox(height: 30,),
                   Text(
                     "wanna join a room with friends? then create one",
                     textAlign: TextAlign.center,
@@ -109,6 +109,7 @@ class _HomeViewState extends State<HomeView>
                       fontSize: 20,
                     ),
                   ),
+                  const SizedBox(height: 30,),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
