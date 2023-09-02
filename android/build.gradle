@@ -6,10 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.0'
-        // START: FlutterFire Configuration
-        classpath 'com.google.gms:google-services:4.3.10'
-        // END: FlutterFire Configuration
+        classpath 'com.android.tools.build:gradle:7.5.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -20,13 +17,13 @@ allprojects {
         mavenCentral()
     }
 }
-/// added this to remove xlint error
-// gradle.projectEvaluted {
+// added this to remove xlint error
+gradle.projectEvaluted {
 
-//     tasks.withTypes<javaCompile>(
-//         options.compilarArgs.addAll(arraysOf("-parameters" , "-Xlint:desprecation"))
-//     )
-// }
+    tasks.withTypes<javaCompile>(
+        options.compilarArgs.addAll(arraysOf("-parameters" , "-Xlint:desprecation"))
+    )
+}
 
 rootProject.buildDir = '../build'
 subprojects {

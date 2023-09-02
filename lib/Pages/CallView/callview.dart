@@ -2,6 +2,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:project_reunite/Apis/webrtc.dart';
 import 'package:project_reunite/common/common.dart';
@@ -94,14 +95,16 @@ class _CallRoomState extends State<CallRoom> {
                     duration: const Duration(milliseconds: 800),
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(40))),
-                    child: AspectRatio(
-                      aspectRatio: 9 / 16,
-                      child: RTCVideoView(
-                        signalling.remoteRenderer!,
-                        filterQuality: FilterQuality.none,
-                        objectFit:
-                            RTCVideoViewObjectFit.RTCVideoViewObjectFitContain,
-                        mirror: true,
+                    child: Expanded(
+                      child: AspectRatio(
+                        aspectRatio: 9 / 16,
+                        child: RTCVideoView(
+                          signalling.remoteRenderer!,
+                          filterQuality: FilterQuality.none,
+                          objectFit:
+                              RTCVideoViewObjectFit.RTCVideoViewObjectFitContain,
+                          mirror: true,
+                        ),
                       ),
                     ),
                   ),
@@ -143,7 +146,7 @@ class _CallRoomState extends State<CallRoom> {
                   ),
                   // ),
                   Positioned(
-                      top: 0,
+                      top: 300,
                       bottom: 0,
                       left: 0,
                       right: 0,
@@ -152,107 +155,118 @@ class _CallRoomState extends State<CallRoom> {
                         decoration: const BoxDecoration(
                           color: Colors.transparent,
                         ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ///button for mic mute --->
-                                circularButton(() {
-                                  isMicON = getIt<Signalling>().muteMic();
-                                  setState(() {});
-                                },
-                                    Colors.white,
-                                    isMicON
-                                        ? const Icon(Icons.mic_sharp)
-                                        : const Icon(Icons.mic_off_sharp)),
-
-                                ///button for call hang up --->
-                                circularButton(() async {
-                                  await getIt<Signalling>().hangUp();
-                                  print("hung up bro");
-                                  Navigator.pop(context, true);
-                                }, const Color.fromARGB(255, 182, 40, 38),
-                                    const Icon(Icons.call_end_sharp)),
-
-                                ///button for extra option-->
-                                circularButton(() {
-                                  if (widget.roomID != null) {
-                                    showShareRoomidDialog(
-                                        context, widget.roomID!);
-                                  } else {
-                                    showEnterRoomIDDialog(context);
-                                  }
-                                }, Colors.indigo.shade50,
-                                    const Icon(Icons.menu_sharp)),
-                              ],
-                            )
-                          ],
-                        ),
+                        child: ButtonBar(context),
                       ))
                 ],
               ),
             ),
           )
-        : Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
+         : 
+  Scaffold(
+            appBar: AppBar(
+              title: Text(
+                widget.roomID.toString(),
+                style: GoogleFonts.robotoFlex(color: Colors.white),
+              ),
+              actions: [
+                IconButton(
+                    onPressed: () async {
+                      await Clipboard.setData(
+                          ClipboardData(text: widget.roomID.toString()));
+                      // ignore: use_build_context_synchronously
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Copy ot the Clipboard')));
+                    },
+                    icon: const Icon(Icons.copy_outlined))
+              ],
+            ),
+            body: Stack(
+              fit: StackFit.passthrough,
+              alignment: AlignmentDirectional.center,
               children: [
-                Center(
-                  child: AnimatedStackContainer(
-                    height: 500,
-                    width: 500,
-                    children: Expanded(
-                        child: RTCVideoView(
-                      signalling.localRenderer!,
-                      mirror: true,
-                    )),
-                  ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 100),
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: AnimatedStackContainer(
+                          width: size.width - 200,
+                          height: size.height - 200,
+                          children: Expanded(child: RTCVideoView(signalling.remoteRenderer!)))),
                 ),
                 Padding(
-                  
-                  padding: const EdgeInsets.all(20.0),
-                  child: AnimatedStackContainer(
-                      width: 200,
-                      height: 100,
-                      children: RTCVideoView(signalling.remoteRenderer!)),
+                  padding:
+                      EdgeInsets.only(bottom: size.height - 600, right: 10),
+                  child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: AnimatedStackContainer(
+                          width: 200, height: 100, children: Expanded(child: RTCVideoView(signalling.localRenderer!,mirror: true,)))),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    ///button for mic mute --->
-                    circularButton(() {
-                      isMicON = getIt<Signalling>().muteMic();
-                      setState(() {});
-                    },
-                        Colors.white,
-                        isMicON
-                            ? const Icon(Icons.mic_sharp)
-                            : const Icon(Icons.mic_off_sharp)),
-
-                    ///button for call hang up --->
-                    circularButton(() async {
-                      await getIt<Signalling>().hangUp();
-                      print("hung up bro");
-                      Navigator.pop(context, true);
-                    }, const Color.fromARGB(255, 182, 40, 38),
-                        const Icon(Icons.call_end_sharp)),
-
-                    ///button for extra option-->
-                    circularButton(() {
-                      if (widget.roomID != null) {
-                        showShareRoomidDialog(context, widget.roomID!);
-                      } else {
-                        showEnterRoomIDDialog(context);
-                      }
-                    }, Colors.indigo.shade50, const Icon(Icons.menu_sharp)),
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(top: size.height - 200),
+                  child: ButtonBar(context),
                 )
               ],
             ),
           );
+  }
+
+  Row ButtonBar(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 120,
+          height: 40,
+          child: FilledButton.icon(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll(Colors.red.shade800)),
+              clipBehavior: Clip.antiAlias,
+              onPressed: () async {
+                await getIt<Signalling>().hangUp();
+                Navigator.pop(context, true);
+              },
+              icon: const Icon(
+                Icons.call_end,
+                color: Colors.white,
+              ),
+              label: const Text('Hang Up')),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+
+        ///button for mic mute --->
+        circularButton(() {
+          isMicON = getIt<Signalling>().muteMic();
+          setState(() {});
+        },
+            Colors.white,
+            isMicON
+                ? const Icon(Icons.mic_sharp)
+                : const Icon(Icons.mic_off_sharp)),
+
+        ///button for call hang up --->
+        // circularButton(() async {
+        //   //await getIt<Signalling>().hangUp();
+        //   print("hung up bro");
+        //   Navigator.pop(context, true);
+        // }, const Color.fromARGB(255, 182, 40, 38),
+        //     const Icon(Icons.call_end_sharp)),
+        const SizedBox(
+          width: 10,
+        ),
+
+        ///button for extra option-->
+        circularButton(() {
+          if (widget.roomID != null) {
+            showShareRoomidDialog(context, widget.roomID!);
+          } else {
+            showEnterRoomIDDialog(context);
+          }
+        }, Colors.indigo.shade50, const Icon(Icons.menu_sharp)),
+      ],
+    );
   }
 }

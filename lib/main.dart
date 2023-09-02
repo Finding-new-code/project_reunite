@@ -1,8 +1,9 @@
 // ignore_for_file: avoid__addCheck
 
-
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:project_reunite/Apis/appwrite.dart';
 import 'package:project_reunite/Pages/CallView/callview.dart';
 import 'package:project_reunite/Pages/HomeView/homeview.dart';
 import 'package:project_reunite/Pages/logic_page.dart';
@@ -12,13 +13,15 @@ import 'package:project_reunite/themedata/themedata.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
-
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp(
+  WidgetsFlutterBinding.ensureInitialized();  
+  if (Platform.isWindows) {
+   await Appwrite().admin();
+  } else {
+   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  }
   setup();
   runApp(const MainApp());
 }
@@ -84,4 +87,4 @@ class _MainAppState extends State<MainApp> {
 //             )));
 //     //app.start();
 //   }
- }
+}
